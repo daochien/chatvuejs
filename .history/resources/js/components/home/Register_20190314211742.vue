@@ -95,7 +95,7 @@ export default {
     methods:{
         register(){
             this.$Progress.start();
-            this.form.post('api/auth/register').then( ({data}) => {
+            this.form.post('api/user/register').then( ({data}) => {
                 if(data.status == true){
                     Swal.fire({ type: 'success', title: 'Success', text: data.msg});
                     this.$router.push({name: 'login'})
@@ -104,7 +104,7 @@ export default {
                 }
             }).catch( (errors) => {
                 console.log(errors);
-                //Swal.fire({ type: 'error', title: 'Oops...', text: 'Something went wrong!'});
+                Swal.fire({ type: 'error', title: 'Oops...', text: 'Something went wrong!'});
             });
             this.$Progress.finish();
         }
